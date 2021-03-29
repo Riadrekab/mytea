@@ -5,6 +5,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mytea/Widgets/TabElement.dart';
 import 'package:mytea/screens/Viennoiserie.dart';
+import 'package:mytea/screens/panier.dart';
 import 'package:mytea/screens/sales.dart';
 
 class MainPage extends StatefulWidget {
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<MainPage> {
               Tea(),
               Viennoiserie(),
               Sales(),
-              Icon(CommunityMaterialIcons.basket),
+              Panier(),
             ],
           ),
         ),
