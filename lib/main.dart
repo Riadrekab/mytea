@@ -6,6 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import 'models/Commandes.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,11 +22,14 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp(
-        theme: ThemeData(
-          fontFamily: "Kam",
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: MainPage());
+    return ChangeNotifierProvider(
+      create: (context) => LiCommande(),
+      child: MaterialApp(
+          theme: ThemeData(
+            fontFamily: "Kam",
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: MainPage()),
+    );
   }
 }
