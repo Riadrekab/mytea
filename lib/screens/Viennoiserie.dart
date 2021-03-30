@@ -37,7 +37,7 @@ class _ViennoiserieState extends State<Viennoiserie> {
                     details: "Sorti du four à 8h",
                   ),
                   ViennoisPr(
-                    nomP: "Croissant",
+                    nomP: "Pain au chocolat",
                     imgL: "assets/images/pain.png",
                     prix: "40Da",
                     details: "Sorti du four à 8h",
@@ -55,19 +55,19 @@ class _ViennoiserieState extends State<Viennoiserie> {
                 scrollDirection: Axis.horizontal,
                 children: [
                   ViennoisPr(
-                    nomP: "Croissant",
+                    nomP: "Tarte chocolat",
                     imgL: "assets/images/cake.png",
                     prix: "40Da",
                     details: "Sorti du four à 8h",
                   ),
                   ViennoisPr(
-                    nomP: "Croissant",
+                    nomP: "rouller",
                     imgL: "assets/images/roller.png",
                     prix: "40Da",
                     details: "Sorti du four à 8h",
                   ),
                   ViennoisPr(
-                    nomP: "Croissant",
+                    nomP: "Tarte aux fraises",
                     imgL: "assets/images/fraise.png",
                     prix: "40Da",
                     details: "Sorti du four à 8h",

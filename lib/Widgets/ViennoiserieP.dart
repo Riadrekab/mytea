@@ -265,17 +265,33 @@ class _ViennoisState extends State<ViennoisPr> {
                                                         color:
                                                             Color(0xfff1b29e),
                                                         onPressed: () {
-                                                          Commande cmd = Commande
-                                                              .constructor(
-                                                                  widget.nomP,
-                                                                  _nbreservation);
-                                                          Provider.of<LiCommande>(
-                                                                  context,
-                                                                  listen: false)
-                                                              .addCmd(cmd);
-                                                          print("ok");
-                                                          Navigator.pop(
-                                                              context);
+                                                          if (_nbreservation <=
+                                                              0) {
+                                                            final snackBar = SnackBar(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .black,
+                                                                content: Text(
+                                                                    'La quantité de commande ne peut pas être égale à 0'));
+
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                                    snackBar);
+                                                          } else {
+                                                            Commande cmd = Commande
+                                                                .constructor(
+                                                                    widget.nomP,
+                                                                    _nbreservation);
+                                                            Provider.of<LiCommande>(
+                                                                    context,
+                                                                    listen:
+                                                                        false)
+                                                                .addCmd(cmd);
+
+                                                            Navigator.pop(
+                                                                context);
+                                                          }
                                                         },
                                                         child:
                                                             Text("Confirmer"),
