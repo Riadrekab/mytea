@@ -38,13 +38,19 @@ class _PanState extends State<Panier> {
   Widget build(BuildContext context) {
     double WidthS = MediaQuery.of(context).size.width;
     double HeightS = MediaQuery.of(context).size.height;
+    const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics());
+
     return Consumer<LiCommande>(builder: (context, list, chid) {
       return SafeArea(
         child: Scaffold(
           body: ListView(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
             children: [
               ListView.builder(
                 shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 itemCount: list.len(),
                 itemBuilder: (BuildContext context, int i) {

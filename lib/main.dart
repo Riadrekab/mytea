@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => LiCommande(),
       child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: "Kam",
             visualDensity: VisualDensity.adaptivePlatformDensity,
