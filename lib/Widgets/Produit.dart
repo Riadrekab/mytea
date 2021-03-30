@@ -282,7 +282,6 @@ class _ProduitState extends State<ProduitCard> {
                                                 child: Text("Confirmer"),
                                               ),
                                               RaisedButton(
-                                                color: Color(0xfff1b29e),
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },

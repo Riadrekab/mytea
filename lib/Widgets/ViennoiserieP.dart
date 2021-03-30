@@ -113,6 +113,16 @@ class _ViennoisState extends State<ViennoisPr> {
                                               height: HeightS * 0.6,
                                               width: WidthS * 0.8,
                                               decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Colors.grey
+                                                          .withOpacity(0.5),
+                                                      spreadRadius: 0.5,
+                                                      blurRadius: 2,
+                                                      offset: Offset(0,
+                                                          0), // changes position of shadow
+                                                    ),
+                                                  ],
                                                   borderRadius:
                                                       BorderRadius.circular(20),
                                                   color: Colors.white),
@@ -297,8 +307,6 @@ class _ViennoisState extends State<ViennoisPr> {
                                                             Text("Confirmer"),
                                                       ),
                                                       RaisedButton(
-                                                        color:
-                                                            Color(0xfff1b29e),
                                                         onPressed: () {
                                                           Navigator.pop(
                                                               context);

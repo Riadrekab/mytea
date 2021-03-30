@@ -44,7 +44,9 @@ class _ProduitState extends State<ProduitPanCard> {
                     child: Flexible(
                       child: Text(
                         widget.nomProduit,
-                        style: TextStyle(fontSize: WidthS * 0.05),
+                        style: TextStyle(
+                            fontSize: WidthS * 0.07,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -60,8 +62,76 @@ class _ProduitState extends State<ProduitPanCard> {
                   RaisedButton(
                       color: Color(0xffF8DAD1),
                       onPressed: () => {
-                            Provider.of<LiCommande>(context, listen: false)
-                                .del(widget.i),
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return StatefulBuilder(
+                                      builder: (context, setState) {
+                                    return Material(
+                                        type: MaterialType.transparency,
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            height: HeightS * 0.3,
+                                            width: WidthS * 0.8,
+                                            decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                    spreadRadius: 0.5,
+                                                    blurRadius: 2,
+                                                    offset: Offset(0,
+                                                        0), // changes position of shadow
+                                                  ),
+                                                ],
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
+                                                  child: Text(
+                                                      "Voulez vous confirmer la suppression du panier ? ",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20)),
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    RaisedButton(
+                                                      color: Color(0xfff1b29e),
+                                                      onPressed: () {
+                                                        Provider.of<LiCommande>(
+                                                                context,
+                                                                listen: false)
+                                                            .del(widget.i);
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text("Oui"),
+                                                    ),
+                                                    RaisedButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text("Annuler"),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ));
+                                  });
+                                })
                           },
                       child: Row(
                         children: [

@@ -41,43 +41,64 @@ class _PanState extends State<Panier> {
     return Consumer<LiCommande>(builder: (context, list, chid) {
       return SafeArea(
         child: Scaffold(
-          body: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: list.len(),
-            itemBuilder: (BuildContext context, int i) {
-              final item = list.itemLi(i).nomP;
-              return list.len() > 0
-                  ? Column(
-                      children: [
-                        SizedBox(height: 6),
-                        Dismissible(
-                          background: Container(
-                            color: Colors.red,
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "Supprimer",
-                                  style: TextStyle(fontSize: 30),
-                                )),
-                          ),
-                          key: UniqueKey(),
-                          onDismissed: (direction) {
-                            Provider.of<LiCommande>(context, listen: false)
-                                .del(i);
+          body: ListView(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: list.len(),
+                itemBuilder: (BuildContext context, int i) {
+                  final item = list.itemLi(i).nomP;
+                  return list.len() > 0
+                      ? Column(
+                          children: [
+                            SizedBox(height: 6),
+                            Dismissible(
+                              background: Container(
+                                color: Colors.red,
+                                child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "Supprimer",
+                                      style: TextStyle(fontSize: 30),
+                                    )),
+                              ),
+                              key: UniqueKey(),
+                              onDismissed: (direction) {
+                                Provider.of<LiCommande>(context, listen: false)
+                                    .del(i);
+                              },
+                              child: ProduitPanCard(
+                                i: i,
+                                nomProduit: list.itemLi(i).nomP,
+                                quantite: list.itemLi(i).quantite.toString(),
+                              ),
+                            ),
+                          ],
+                        )
+                      : SizedBox(
+                          height: 0,
+                        );
+                },
+              ),
+              list.len() > 0
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30.0, right: 30, top: 10, bottom: 10),
+                      child: Container(
+                        child: RaisedButton(
+                          onPressed: () {
+                            print("ok");
                           },
-                          child: ProduitPanCard(
-                            i: i,
-                            nomProduit: list.itemLi(i).nomP,
-                            quantite: list.itemLi(i).quantite.toString(),
-                          ),
+                          color: Color(0xfff1b29e),
+                          child: Text("Confirmer les achats"),
                         ),
-                      ],
+                      ),
                     )
                   : SizedBox(
                       height: 0,
-                    );
-            },
+                    ),
+            ],
           ),
         ),
       );
